@@ -7,6 +7,8 @@ describe('get_integer_interval_2', function () {
   var collection_a = [2, 4, 6, 8, 10];
   var collection_b = [10, 8, 6, 4, 2];
 
+  
+
   iit('根据给出的两个数字得到自增的偶数区间', function() {
 
     var result = get_integer_interval_2(1, 10);
