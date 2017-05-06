@@ -6,7 +6,7 @@ describe('collect_max_number', function () {
 
   var collection = [1, 2, 3, 4, 5];
 
-  it('选出给定数字集合元素的最大值', function() {
+  iit('选出给定数字集合元素的最大值', function() {
 
     var result = collect_max_number(collection);
     expect(result).toEqual(5);
