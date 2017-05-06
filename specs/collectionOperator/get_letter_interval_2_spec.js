@@ -22,13 +22,13 @@ describe('get_letter_interval', function () {
     expect(result).toEqual(collection_a);
   });
 
-  it('根据给出的两个数字得到对应自减的字母区间', function() {
+  iit('根据给出的两个数字得到对应自减的字母区间', function() {
 
     var result = get_letter_interval(53, 20);
     expect(result).toEqual(collection_b);
   });
 
-  it('给定两个相同的数字得到只含此数字对应字母的数组', function() {
+  iit('给定两个相同的数字得到只含此数字对应字母的数组', function() {
 
     var result = get_letter_interval(28, 28);
     expect(result).toEqual(['ab']);

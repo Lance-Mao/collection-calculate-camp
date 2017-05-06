@@ -2,24 +2,35 @@
 
 function get_letter_interval_2(number_a, number_b) {
   //在这里写入代码
-  var result1 = [];
-  var result2 = [];
-  var result3 = [];
-  var result4 = [];
-  var result = [];
   var array = ['', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-  if (number_a < number_b) {
-    for (var i = number_a; i < number_b; i++) {
-      if (i / array == 0) {
-        result3 = result1.push(array[i]);
-      } else {
-        result4 = result2.push(i / 26) + result2.push(i % 26);
-      }
-    }
-    result = result3 + result4;
-    return result;
-  }
+  var result = [];
+
+  if (number_a < number_b) return increasing(number_a, number_b, array, result);
+  if (number_a > number_b) return descreae(number_a, number_b, array, result);
+  return [array[parseInt(number_a / 26)] + array[number_a % 26]];
+
 }
 
+function increasing(number_a, number_b, array, result) {
+  for (; number_a <= number_b; ++number_a) {
+    if (number_a % 26 == 0) {
+      result.push(array[parseInt(number_a / 26 - 1)] + array[26]);
+    } else {
+      result.push(array[parseInt(number_a / 26)] + array[number_a % 26]);
+    }
+  }
+  return result;
+}
+
+function descreae(number_a, number_b, array, result) {
+  for (; number_a >= number_b; --number_a) {
+    if (number_a % 26 == 0) {
+      result.push(array[parseInt(number_a / 26 - 1)] + array[26]);           //parseInt() 函数可解析一个字符串,并返回一个整数
+    } else {
+      result.push(array[parseInt(number_a / 26)] + array[number_a % 26]);
+    }
+  }
+  return result;
+}
 module.exports = get_letter_interval_2;
 
