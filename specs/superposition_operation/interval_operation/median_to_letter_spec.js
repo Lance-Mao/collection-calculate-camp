@@ -1,6 +1,6 @@
 'use strict';
 
-var median_to_letter = require("../../../practices/superposition_operation/interval_operation/average_uneven.js");
+var median_to_letter = require("../../../practices/superposition_operation/interval_operation/average_uneven1.js");
 
 describe('median_to_letter', function() {
 
@@ -9,7 +9,7 @@ describe('median_to_letter', function() {
                     40,41,42,43,44,45,46,47,48,49,
                     50,51,52,53];
 
-  it('(20,53)的中位数(如果是小数上取整)对应的字母', function() {
+  iit('(20,53)的中位数(如果是小数上取整)对应的字母', function() {
 
     var result = median_to_letter(collection);
 
