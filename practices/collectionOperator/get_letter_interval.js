@@ -19,7 +19,7 @@ function get_letter_interval(number_a, number_b) {
   }
 
   if (number_b==number_a) {
-    result.push(number_a);
+    result.push(array[number_a]);
     return result;
   }
 
