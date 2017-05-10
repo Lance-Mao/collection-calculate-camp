@@ -1,19 +1,8 @@
 function count_same_elements(collection) {
-  //在这里写入代码
-  /* var re = {};
-   for(var i=0,v,l = collection.length; v = collection[i],i<l; i++)
-   {
-   var rv = /^([a-z]+)(?:.+?(\d+))?/i.exec(v);
-   if (!re[rv[1]])
-   re[rv[1]] = 0;
-   re[rv[1]] += rv[2] ? parseInt(rv[2], 10) : 1;
-   }
-
-   return re;*/
-
   var result = [];
-  var index = 0;
+  var index;
   var sum = 0;
+
   while (true) {
     var count = 0;
     index = sum;
@@ -28,6 +17,7 @@ function count_same_elements(collection) {
       break;
     }
   }
+
   return result;
 }
 

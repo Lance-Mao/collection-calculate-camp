@@ -2,6 +2,7 @@
 var is_exist_element = function (collection, element) {
 
   var result = [];
+  var count = 0;
   for (var i in collection) {
     if (i % 2 === 0) {
       result.push(collection[i]);
@@ -11,17 +12,19 @@ var is_exist_element = function (collection, element) {
        if (collection[i + 1] !== element) {
        bool = true;
        }*/
-      if (collection[i]===element) {
-        return false;
-      }
-
     }
   }
 
-  for (var i in result) {
+  for (var i = 0; i < result.length; i++) {
     if (result[i] === element) {
-      return true;
+      count++;
     }
+  }
+
+  if (count === 0) {
+    return false;
+  } else {
+    return true;
   }
 
 };

@@ -8,11 +8,15 @@ var single_element = function (collection) {
     }
   }
 
-  for (var i = 0; i < distinct(result).length-1; i++) {
+  for (var i = 0; i < distinct(result).length - 1; i++) {
     resu.push(distinct(result)[i]);
   }
 
-  return resu;
+  if (distinct(result).length !== 0) {
+    return resu;
+  }else {
+    return [];
+  }
 
 
 };

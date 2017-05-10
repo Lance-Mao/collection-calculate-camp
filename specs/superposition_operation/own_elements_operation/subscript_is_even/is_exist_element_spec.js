@@ -9,7 +9,7 @@ describe('is_exist_element_spec', function() {
     expect(result).toEqual(true);
   });
 
-  it('下标为偶数的元素中，不存在4', function() {
+  iit('下标为偶数的元素中，不存在4', function() {
     var result = is_exist_element(collection_a, 4);
     expect(result).toEqual(false);
   });

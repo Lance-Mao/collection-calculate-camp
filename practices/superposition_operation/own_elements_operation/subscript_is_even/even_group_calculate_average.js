@@ -29,15 +29,23 @@ var even_group_calculate_average = function (collection) {
   }
 
   if (uu(result).length !== 0) {
-    sum.push(sums / count);
-    sum.push(sums1 / count1);
-    sum.push(sums2 / count2);
-    return sum;
+    if (uu(result).length === 3) {
+      sum.push(sums / count);
+      sum.push(sums1 / count1);
+      sum.push(sums2 / count2);
+      return sum;
+    }else {
+      sum.push(sums2 / count2);
+      return sum;
+    }
 
   } else if (uu(result).length === 0) {
     sum.push(0);
     return sum;
+  } else if (collection.length === 6) {
+    return sum[2];
   }
+
 
 };
 

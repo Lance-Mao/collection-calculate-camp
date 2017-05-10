@@ -11,7 +11,7 @@ describe('single_element_spec', function() {
     expect(result).toEqual([6, 43, 5]);
   });
 
-  it('第偶数个元素中，选出不重复的元素', function() {
+  iit('第偶数个元素中，选出不重复的元素', function() {
     var result = single_element(collection_b);
     expect(result).toEqual([]);
   });
