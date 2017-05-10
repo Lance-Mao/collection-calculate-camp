@@ -1,30 +1,22 @@
 function count_same_elements(collection) {
-  var resultArray = [];
-  var index;
-  var sum = 0;
+  var result = [];
 
-  while (true) {
-    var re = [];
-    var count = 0;
-    index = sum;
-    for (var i in collection) {
-      if (collection[index] === collection[i]) {
-        count++;
+  collection.forEach((element, index) => {
+    var item = element.split("-");
+    if (item.length > 1) {
+      collection.splice(index, 1);
+      for (var i = 0; i < item[1]; i++) {
+        collection.push(item[0]);
       }
     }
-    sum += count;
-    re = collection[index].split("-");
-    if (re.length === 1) {
-      resultArray.push({key: collection[index], count: count});
-    } else {
-      resultArray.push({key: re[0], count: parseInt(re[1])})
-    }
-    if (sum >= collection.length) {
-      break;
-    }
-  }
+  });
 
-  return resultArray;
+  collection.forEach(item => {
+    if (!result.find(element => element.key === item))
+      result.push({key: item, count: collection.filter(element => element === item).length});
+  });
+
+  return result;
 }
 
 module.exports = count_same_elements;
