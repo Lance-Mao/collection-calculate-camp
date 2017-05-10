@@ -1,8 +1,8 @@
 function count_same_elements(collection) {
-  //在这里写入代码
-  var result = [];
-  var index = 0;
+  var resultArray = [];
+  var index;
   var sum = 0;
+
   while (true) {
     var re = [];
     var count = 0;
@@ -14,17 +14,17 @@ function count_same_elements(collection) {
     }
     sum += count;
     re = collection[index].split("-");
-    if (re.length === 2) {
-      result.push({key: re[0], count: parseInt(re[1])})
+    if (re.length === 1) {
+      resultArray.push({key: collection[index], count: count});
     } else {
-      result.push({key: collection[index], count: count});
+      resultArray.push({key: re[0], count: parseInt(re[1])})
     }
     if (sum >= collection.length) {
       break;
     }
   }
 
-  return result;
+  return resultArray;
 }
 
 module.exports = count_same_elements;
