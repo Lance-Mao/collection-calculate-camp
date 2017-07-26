@@ -1,27 +1,33 @@
 'use strict';
 function rank_by_two_large_one_small(collection) {
-  //这里写代码
-  var array = ['', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-  var sum = 0;
-  var ave = 0;
-  var d = "";
-  for (var i = collection[0]; i < collection.length; i++) {
-    sum += collection[i];
-  }
-  ave = parseInt(sum / collection.length.length);
-  d = arr(ave, array);
-  return d;
+  let littleIndex = 0;
+  let littleNumber = 0;
+  let littleElement = [];
+  let upperElement = [];
+  let result = [];
 
-}
+  collection.sort((a, b) => a - b > 0 ? 1 : -1);
 
-function arr(ave, array) {
-  var res = "";
-  if (ave % 26 === 0) {
-    res = array[parseInt(ave / 26)-1] + array[parseInt(array.length)];
-  } else {
-    res = array[parseInt(ave / 26)] + array[ave % 26];
+  for (let index = 0; index < collection.length; ++index) {
+    if (index === littleIndex && littleElement.length < parseInt(collection.length / 3)) {
+      littleElement.push(collection[index]);
+      littleIndex += 3;
+    } else {
+      upperElement.push(collection[index]);
+    }
+
   }
 
-  return res;
+  littleIndex = 2
+  for (let index = 0; index < upperElement.length; ++index) {
+    if (index == littleIndex) {
+      result.push(littleElement[littleNumber]);
+      littleIndex += 2;
+      ++littleNumber;
+    }
+    result.push(upperElement[index]);
+  }
+
+  return result;
 }
 module.exports = rank_by_two_large_one_small;

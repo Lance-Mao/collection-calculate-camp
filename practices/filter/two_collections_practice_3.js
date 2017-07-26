@@ -2,28 +2,14 @@
 
 function choose_divisible_integer(collection_a, collection_b) {
 
-  //在这里写入代码
-  var result = [];
-  for (var i in collection_a) {
-    if (division(collection_a[i], collection_b)) {
-      result.push(collection_a[i]);
+  let arrey = []
+    collection_a.filter(item => collection_b.map(item2 => {
+    if (item % item2 === 0) {
+      arrey.push(item);
     }
-  }
-  return result;
-}
+  }));
 
-function division(ement, collection_b) {
-  var count = 0;
-  for (var i in collection_b) {
-    if (ement % collection_b[i] ===0) {
-      count++;
-    }
-  }
-  if (count===0){
-    return false;
-  }else {
-    return true;
-  }
+  return arrey;
 }
 
 module.exports = choose_divisible_integer;

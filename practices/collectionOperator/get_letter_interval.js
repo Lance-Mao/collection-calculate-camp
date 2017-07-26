@@ -1,28 +1,19 @@
 'use strict';
 
 function get_letter_interval(number_a, number_b) {
-  //在这里写入代码
-  var array = ['', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-  var result = [];
-  if (number_b>number_a) {
-    for (var i = number_a;i<=number_b;i++) {
-      result.push(array[i]);
-    }
-    return result;
-  }
+  let basicLetters = getBasicLetter();
+  if (number_a > number_b) return basicLetters.splice(number_b - 1, number_a - number_b + 1).reverse();
+  if (number_a < number_b) return basicLetters.splice(number_a - 1, number_b - number_a + 1);
 
-  if (number_b<number_a) {
-    for (var i = number_a;i>=number_b;i--) {
-      result.push(array[i]);
-    }
-    return result;
-  }
+  return [basicLetters[number_a-1]];
+}
 
-  if (number_b==number_a) {
-    result.push(array[number_a]);
-    return result;
-  }
+function getBasicLetter() {
+  let basicLetter = [];
+  for (let i = 97; i < 97 + 26; ++i)
+    basicLetter.push(String.fromCharCode(i));
 
+  return basicLetter;
 
 }
 

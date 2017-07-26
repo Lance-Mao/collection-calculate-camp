@@ -1,23 +1,36 @@
 function count_same_elements(collection) {
-  collection.forEach((element, index) => {
-    if (element.length > 1) {
-      let temporaryArray = element.split("");
-      let number = parseInt(element.replace(/[^0-9]/ig, ""));
-      collection.splice(index, 1);
-      for (let a = 0; a < number; a++) {
-        collection.splice(index, 0, temporaryArray[0])
-      }
+  let sameElementCount = [];
 
-    }
-  });
-  let result = [];
-
-  collection.forEach(item => {
-    if (!result.find(element => element.key === item))
-      result.push({key: item, count: collection.filter(element => element === item).length});
+  collection.map(element => {
+    let nameIndex = findContainsKeyIndex(sameElementCount, element);
+    if (nameIndex !== -1) addKeyCount(sameElementCount, nameIndex, element);
+    else sameElementCount.push(createObj(element));
   });
 
-  return result
+  return sameElementCount;
+}
+
+function findContainsKeyIndex(sameElementCount, name) {
+  return sameElementCount.findIndex(element => element.name === name.charAt(0));
+}
+
+function addKeyCount(sameElementCount, nameIndex, element) {
+  let [name, summary] = getKeyCount(element);
+  sameElementCount[nameIndex].summary += summary;
+}
+
+function createObj(element) {
+  let [name, summary] = getKeyCount(element);
+
+  return {name: name, summary: summary};
+}
+
+function getKeyCount(name) {
+  let nameCount = name.replace(/-|\[|\]|:/g, " ").split(" ");
+
+  if (nameCount.length === 1) return [name, 1];
+
+  return [name[0], parseInt(nameCount[1])];
 }
 
 module.exports = count_same_elements;

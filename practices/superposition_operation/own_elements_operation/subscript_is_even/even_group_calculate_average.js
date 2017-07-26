@@ -1,62 +1,31 @@
 'use strict';
 var even_group_calculate_average = function (collection) {
-  var result = [];
-  var sum = [];    //计算一位数总和
-  var sum1 = [];
-  var sums = 0;
-  var sums1 = 0;
-  var sums2 = 0;
-  var count = 0;   //统计一位数出现的总次数
-  var count1 = 0;
-  var count2 = 0;
-  for (var i = 0; i < collection.length; i++) {
-    if ((i + 1) % 2 === 0) {
-      result.push(collection[i]);
+  let result = [0, 0, 0, 0, 0, 0];
+  let isEven = [false, false, false];
+
+  for (let index = 1; index < collection.length; index += 2) {
+    if (collection[index] % 2 === 0) {
+      isEven[2] = true;
+      if (collection[index] < 10) {
+        result[0] += collection[index];
+        result[3] += 1;
+        isEven[1] = true;
+      } else if (collection[index] < 100 && collection[index] >= 10) {
+        result[1] += collection[index];
+        result[4] += 1
+        isEven[2] = true;
+      } else if (collection[index] < 1000 && collection[index] >= 100) {
+        result[5] += 1
+        result[2] += collection[index];
+      }
     }
   }
 
-  for (var i in uu(result)) {
-    if (uu(result)[i] < 10) {
-      sums += uu(result)[i];
-      count++;
-    } else if (uu(result)[i] >= 10 && uu(result)[i] < 100) {
-      sums1 += uu(result)[i];
-      count1++;
-    } else if (uu(result)[i] >= 100 && uu(result)[i] < 1000) {
-      sums2 += uu(result)[i];
-      count2++;
-    }
-  }
+  if (!isEven[2]) return [0];
 
-  if (uu(result).length !== 0) {
-    if (uu(result).length === 3) {
-      sum.push(sums / count);
-      sum.push(sums1 / count1);
-      sum.push(sums2 / count2);
-      return sum;
-    }else {
-      sum.push(sums2 / count2);
-      return sum;
-    }
+  if (isEven[0] || isEven[1]) return [result[0] / result[3], result[1] / result[4], result[2] / result[5]];
 
-  } else if (uu(result).length === 0) {
-    sum.push(0);
-    return sum;
-  } else if (collection.length === 6) {
-    return sum[2];
-  }
-
-
-};
-
-function uu(coll) {
-  var result1 = [];
-  for (var i in coll) {
-    if (coll[i] % 2 === 0) {
-      result1.push(coll[i]);
-    }
-  }
-  return result1;
+  return [result[2] / result[5]];
 }
 
 module.exports = even_group_calculate_average;

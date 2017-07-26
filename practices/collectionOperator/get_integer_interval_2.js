@@ -1,37 +1,20 @@
 'use strict';
 
 function get_integer_interval_2(number_a, number_b) {
-  //在这里写入代码
-  var result = [];
-  if (number_a<number_b) {
-    for (var i = number_a;i<=number_b;i++) {
-      if (i%2==0) {
-        result.push(i);
-      }
-    }
-    return result;
-  }
+  if (number_a > number_b) return getEvenInterval(number_a, number_b);
+  if (number_a < number_b) return getEvenInterval(number_b, number_a).reverse();
+  if (number_a % 2 === 0) return [number_a];
 
-  if (number_a>number_b) {
-    for (var i = number_a;i>=number_b;i--) {
-      if (i%2==0) {
-        result.push(i);
-      }
-    }
-    return result;
-  }
+  return [];
+}
 
-  if (number_a==number_b) {
-    result.push(number_b);
-    return result;
-  }
+function getEvenInterval(maxNumber, minNumber) {
+  let evenInterval = [];
+  maxNumber = maxNumber % 2 === 0 ? maxNumber : maxNumber - 1;
+  for (; maxNumber >= minNumber; maxNumber -= 2)
+    evenInterval.push(maxNumber);
 
-  if (number_a==number_b) {
-      result.push(" ");
-      return result;
-  }
-
-
+  return evenInterval;
 }
 
 module.exports = get_integer_interval_2;
