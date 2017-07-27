@@ -1,12 +1,8 @@
 'use strict';
 
 function calculate_elements_sum(collection, element) {
-  //在这里写入代码
-  for (var i in collection) {
-    if (element===collection[i]) {
-      return parseInt(i);
-    }
-  }
+
+  return collection.indexOf(element)
 }
 
 module.exports = calculate_elements_sum;
