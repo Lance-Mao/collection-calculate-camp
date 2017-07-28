@@ -2,7 +2,7 @@
 
 function collect_min_number(collection) {
 
-  return Math.min.apply(null,collection);
+  return collection.reduce((a, b) => a > b ? b : a);
 }
 
 module.exports = collect_min_number;

@@ -2,7 +2,7 @@
 
 function collect_max_number(collection) {
 
-  return Math.max.apply(null,collection);
+  return collection.reduce((a, b) => a < b ? b : a);
 }
 
 module.exports = collect_max_number;
