@@ -1,4 +1,5 @@
 function count_same_elements(collection) {
+<<<<<<< HEAD
   const result = [];
 
   collection.forEach((element, index) => {
@@ -18,6 +19,10 @@ function count_same_elements(collection) {
 
   return result;
 
+=======
+
+
+>>>>>>> 405601fdce841e67eb257e0762f223366af207ca
   // let array = [];
   //
   // let times = 1;

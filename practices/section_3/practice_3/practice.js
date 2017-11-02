@@ -1,43 +1,44 @@
-function create_updated_collection_a(collection_a, object_b) {
-  //在这里写入代码
+function create_updated_collection(collection_a, object_b) {
+  let sameElementCount = countSameElements(collection_a);
+  updatedCollection(sameElementCount, object_b);
 
-  var result = [];
-  var index = 0;
-  var sum = 0;
-  while (true) {
-    var count = 0;
-    index = sum;
-    for (var i in collection_a) {
-      if (collection_a[index] === collection_a[i]) {
-        count++;
-      }
-    }
-    sum += count;
-    result.push({key: collection_a[index], count: count});
-    if (sum >= collection_a.length) {
-      break;
-    }
-  }
-
-  return sub(result, object_b);
+  return sameElementCount;
 }
 
-function sub(collection,object) {
-  for (var i in collection) {
-    for (var j in object.value) {
-      if (collection[i].key === object.value[j]) {
-        if (collection[i].count % 3 === 0) {
-          collection[i].count = collection[i].count -= collection[i].count / 3;
-        } else if (collection[i].count % 3 === 1) {
-          collection[i].count = collection[i].count -= (collection[i].count - 1 ) / 3;
-        } else if (collection[i].count % 3 === 2) {
-          collection[i].count = collection[i].count -= (collection[i].count-2) / 3;
-        }
-      }
-    }
-  }
+function updatedCollection(collectionA, objectB) {
+  let objectBValues = objectB.value;
 
-  return collection;
+  collectionA.map(element => {
+    if (objectBValues.includes(element.key))
+      if (element.count >= 3) element.count -= parseInt(element.count / 3);
+  });
+
+  return collectionA;
 }
 
-module.exports = create_updated_collection_a;
+
+function countSameElements(collection) {
+  let sameElementCount = [];
+
+  collection.map(key => {
+    let keyIndex = findContainsKeyIndex(sameElementCount, key);
+    if (keyIndex !== -1) addKeyCount(sameElementCount, keyIndex);
+    else sameElementCount.push(createObj(key));
+  });
+
+  return sameElementCount;
+}
+
+function findContainsKeyIndex(sameElementCount, key) {
+  return sameElementCount.findIndex(element => element.key === key);
+}
+
+function addKeyCount(sameElementCount, keyIndex) {
+  sameElementCount[keyIndex].count += 1;
+}
+
+function createObj(key) {
+  return {key: key, count: 1};
+}
+
+module.exports = create_updated_collection;
